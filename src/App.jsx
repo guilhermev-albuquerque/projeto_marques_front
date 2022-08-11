@@ -7,17 +7,17 @@ function App() {
   const [search, setSearch] = useState("");
   const [animeList, setAnimeList] = useState([]);
 
-  const GetAnime = async () => {
+  const GetAnime = async (e) => {
     const response = await fetch(
       `https://api.jikan.moe/v4/anime?q=${search}&limit=100`
     ).then((res) => res.json());
 
     setAnimeList(response.data);
+    e.preventDefault();
   };
 
   const HandleSearch = (e) => {
     e.preventDefault();
-
     GetAnime(search);
   };
 
@@ -38,12 +38,7 @@ function App() {
           />
         </div>
         <div className="container">
-          <Home
-            HandleSearch={search}
-            search={search}
-            SetSearch={setSearch}
-            animeList={animeList}
-          />
+          <Home animeList={animeList} />
         </div>
       </div>
     </div>
