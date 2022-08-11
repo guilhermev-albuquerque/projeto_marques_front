@@ -16,11 +16,6 @@ function App() {
     e.preventDefault();
   };
 
-  const HandleSearch = (e) => {
-    e.preventDefault();
-    GetAnime(search);
-  };
-
   useEffect(() => {
     GetAnime();
   }, [search]);
